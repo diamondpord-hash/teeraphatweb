@@ -4,32 +4,105 @@
   <title>teerapatweb</title>
   <style>
     body {
-      background: black;
+      margin: 0;
+      background: linear-gradient(135deg, #000, #111);
       color: white;
-      text-align: center;
       font-family: sans-serif;
-      margin-top: 100px;
+      text-align: center;
+      overflow: hidden;
     }
 
-    button {
+    .container {
+      margin-top: 80px;
+      animation: fadeIn 2s;
+    }
+
+    img {
+      width: 150px;
+      border-radius: 50%;
+      border: 3px solid cyan;
+      box-shadow: 0 0 20px cyan;
+      transition: 0.3s;
+    }
+
+    img:hover {
+      transform: scale(1.1);
+    }
+
+    h1 {
+      margin: 10px;
+      font-size: 32px;
+    }
+
+    p {
+      color: #aaa;
+    }
+
+    .btn {
+      margin: 10px;
       padding: 10px 20px;
-      background: cyan;
       border: none;
-      border-radius: 10px;
+      border-radius: 20px;
+      background: cyan;
+      color: black;
       cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: white;
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    /* ลูกเล่นพื้นหลัง */
+    .circle {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: cyan;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 10s infinite;
+    }
+
+    @keyframes float {
+      from {transform: translateY(0);}
+      to {transform: translateY(-800px);}
     }
   </style>
 </head>
 <body>
 
-<h1>ยินดีต้อนรับ</h1>
-<p>นี่คือเว็บกูเอง 😎</p>
+<div class="container">
+  <img src="https://via.placeholder.com/150" id="profile">
+  <h1>TEERAPAT</h1>
+  <p>เว็บกู เท่ๆ 😎</p>
 
-<button onclick="hi()">กดดิ</button>
+  <button class="btn" onclick="sayHi()">ทักกู</button>
+  <button class="btn" onclick="goIG()">IG กู</button>
+</div>
 
 <script>
-function hi() {
-  alert("ไงเพื่อน");
+function sayHi() {
+  alert("ไงเพื่อน 😎");
+}
+
+function goIG() {
+  window.open("https://instagram.com/", "_blank");
+}
+
+// สร้างลูกเล่นลอยๆ
+for (let i = 0; i < 20; i++) {
+  let c = document.createElement("div");
+  c.classList.add("circle");
+  c.style.left = Math.random() * 100 + "vw";
+  c.style.animationDuration = (5 + Math.random()*5) + "s";
+  document.body.appendChild(c);
 }
 </script>
 
